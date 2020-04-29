@@ -14,4 +14,10 @@ module.exports = {
     hello: async ctx => {
         return `Hello World`;
     },
+    countSearch: async ctx => {
+        let entity = strapi.query('restaurant').countSearch({ _q: 'my search query'});
+        // console.log(entity);
+
+        return sanitizeEntity(entity, {model: strapi.models.restaurant});
+    }
 };

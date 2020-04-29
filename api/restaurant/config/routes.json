@@ -21,6 +21,14 @@
       "path": "/restaurants/count",
       "handler": "restaurant.count",
       "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/countSearch",
+      "handler": "restaurant.countSearch",
+      "config": {
         "policies": []
       }
     },
@@ -29,7 +37,7 @@
       "path": "/restaurants/:id",
       "handler": "restaurant.findOne",
       "config": {
-        "policies": []
+        "policies": ["isAdmin"]
       }
     },
     {
@@ -52,14 +60,6 @@
       "method": "DELETE",
       "path": "/restaurants/:id",
       "handler": "restaurant.delete",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/restaurants/:id",
-      "handler": "restaurant.findOne",
       "config": {
         "policies": []
       }

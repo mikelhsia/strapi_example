@@ -9,5 +9,10 @@
   },
   "admin": {
     "autoOpen": false
+  },
+  "webhooks": {
+    "defaultHeaders" : {
+      "Authorization": "Bearer my-very-secured-token"
+    }
   }
 }
