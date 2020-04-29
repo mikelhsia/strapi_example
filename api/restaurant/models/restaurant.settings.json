@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restaurants",
+  "info": {
+    "name": "restaurant"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "categories": {
+      "via": "restaurants",
+      "collection": "categories"
+    }
+  }
+}

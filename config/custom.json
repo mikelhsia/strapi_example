@@ -1,0 +1,5 @@
+{
+  "myCustomConfiguration": "This configuration is accessible through strapi.config.myCustomConfiguration",
+  "purpose": "Add custom configurations to the project. The content of this file is available through the strapi.config object.",
+  "maiColor": "blue"
+}
