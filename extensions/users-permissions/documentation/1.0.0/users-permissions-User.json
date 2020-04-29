@@ -1244,6 +1244,29 @@
                 }
               }
             }
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "token"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "users": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1281,6 +1304,12 @@
           },
           "role": {
             "type": "string"
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
