@@ -56,6 +56,10 @@
     "tokens": {
       "via": "users",
       "collection": "token"
+    },
+    "articles": {
+      "via": "user",
+      "collection": "article"
     }
   }
 }

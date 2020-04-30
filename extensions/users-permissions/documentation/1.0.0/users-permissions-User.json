@@ -1267,6 +1267,34 @@
                 }
               }
             }
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "content",
+                "slug"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1306,6 +1334,12 @@
             "type": "string"
           },
           "tokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "articles": {
             "type": "array",
             "items": {
               "type": "string"

@@ -21,6 +21,11 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "articles"
     }
   }
 }
