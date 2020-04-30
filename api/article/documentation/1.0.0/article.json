@@ -518,7 +518,8 @@
         "required": [
           "id",
           "title",
-          "content"
+          "content",
+          "slug"
         ],
         "properties": {
           "id": {
@@ -529,19 +530,26 @@
           },
           "content": {
             "type": "string"
+          },
+          "slug": {
+            "type": "string"
           }
         }
       },
       "NewArticle": {
         "required": [
           "title",
-          "content"
+          "content",
+          "slug"
         ],
         "properties": {
           "title": {
             "type": "string"
           },
           "content": {
+            "type": "string"
+          },
+          "slug": {
             "type": "string"
           }
         }
