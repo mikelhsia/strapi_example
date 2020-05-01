@@ -18,8 +18,13 @@
       "type": "richtext"
     },
     "categories": {
-      "via": "restaurants",
-      "collection": "categories"
+      "collection": "categories",
+      "via": "restaurants"
+    },
+    "chefs": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "restaurant"
     }
   }
 }

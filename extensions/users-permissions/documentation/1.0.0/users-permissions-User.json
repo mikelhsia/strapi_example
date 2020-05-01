@@ -1292,6 +1292,38 @@
                 },
                 "user": {
                   "type": "string"
+                },
+                "publishDate": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "restaurant": {
+            "required": [
+              "id",
+              "Name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Name": {
+                "type": "string"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "chefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
                 }
               }
             }
@@ -1344,6 +1376,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "restaurant": {
+            "type": "string"
           }
         }
       }

@@ -579,8 +579,14 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "restaurant": {
+                "type": "string"
               }
             }
+          },
+          "publishDate": {
+            "type": "string"
           }
         }
       },
@@ -601,6 +607,9 @@
             "type": "string"
           },
           "user": {
+            "type": "string"
+          },
+          "publishDate": {
             "type": "string"
           }
         }

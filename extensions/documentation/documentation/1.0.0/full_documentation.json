@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/30/2020 12:48:36 PM"
+    "x-generation-date": "05/01/2020 12:26:49 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4426,8 +4426,14 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "restaurant": {
+                "type": "string"
               }
             }
+          },
+          "publishDate": {
+            "type": "string"
           }
         }
       },
@@ -4448,6 +4454,9 @@
             "type": "string"
           },
           "user": {
+            "type": "string"
+          },
+          "publishDate": {
             "type": "string"
           }
         }
@@ -4482,6 +4491,12 @@
                   "type": "string"
                 },
                 "categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "chefs": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -4545,6 +4560,60 @@
                 }
               }
             }
+          },
+          "chefs": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "username",
+                "email"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "resetPasswordToken": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "boolean"
+                },
+                "blocked": {
+                  "type": "boolean"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "tokens": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "restaurant": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -4560,6 +4629,12 @@
             "type": "string"
           },
           "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "chefs": {
             "type": "array",
             "items": {
               "type": "string"
@@ -4626,6 +4701,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "restaurant": {
+                  "type": "string"
                 }
               }
             }
@@ -4749,6 +4827,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "restaurant": {
+                  "type": "string"
                 }
               }
             }
@@ -4892,6 +4973,38 @@
                 },
                 "user": {
                   "type": "string"
+                },
+                "publishDate": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "restaurant": {
+            "required": [
+              "id",
+              "Name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Name": {
+                "type": "string"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "chefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
                 }
               }
             }
@@ -4944,6 +5057,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "restaurant": {
+            "type": "string"
           }
         }
       },

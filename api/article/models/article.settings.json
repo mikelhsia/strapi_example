@@ -26,6 +26,9 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "articles"
+    },
+    "publishDate": {
+      "type": "date"
     }
   }
 }

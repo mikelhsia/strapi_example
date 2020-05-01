@@ -60,6 +60,10 @@
     "articles": {
       "via": "user",
       "collection": "article"
+    },
+    "restaurant": {
+      "via": "chefs",
+      "model": "restaurant"
     }
   }
 }
