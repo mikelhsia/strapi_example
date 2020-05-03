@@ -64,6 +64,10 @@
     "restaurant": {
       "via": "chefs",
       "model": "restaurant"
+    },
+    "comments": {
+      "via": "user",
+      "collection": "comments"
     }
   }
 }

@@ -1299,6 +1299,12 @@
                 },
                 "status": {
                   "type": "string"
+                },
+                "comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -1327,6 +1333,28 @@
               "chefs": {
                 "type": "array",
                 "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "article": {
                   "type": "string"
                 }
               }
@@ -1383,6 +1411,12 @@
           },
           "restaurant": {
             "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

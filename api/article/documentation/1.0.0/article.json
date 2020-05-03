@@ -583,6 +583,12 @@
               },
               "restaurant": {
                 "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -596,6 +602,28 @@
               "published",
               "archive"
             ]
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "article": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -629,6 +657,12 @@
               "published",
               "archive"
             ]
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

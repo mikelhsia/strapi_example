@@ -38,6 +38,10 @@
         "archive"
       ],
       "required": true
+    },
+    "comments": {
+      "collection": "comments",
+      "via": "article"
     }
   }
 }
