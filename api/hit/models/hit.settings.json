@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hits",
+  "info": {
+    "name": "hit"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "count": {
+      "type": "integer"
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}

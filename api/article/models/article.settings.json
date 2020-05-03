@@ -29,6 +29,15 @@
     },
     "publishDate": {
       "type": "date"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "published",
+        "archive"
+      ],
+      "required": true
     }
   }
 }

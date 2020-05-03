@@ -15,7 +15,7 @@ module.exports = {
    * Simple example.
    * Every monday at 1am.
    */
-  // '0 1 * * *': () => {
-  //   console.log("Cron job is running...");
-  // }
+  '10 * * * * *': () => {
+    strapi.config.functions.docker();
+  },
 };

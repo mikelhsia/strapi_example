@@ -1275,7 +1275,8 @@
                 "id",
                 "title",
                 "content",
-                "slug"
+                "slug",
+                "status"
               ],
               "properties": {
                 "id": {
@@ -1294,6 +1295,9 @@
                   "type": "string"
                 },
                 "publishDate": {
+                  "type": "string"
+                },
+                "status": {
                   "type": "string"
                 }
               }
