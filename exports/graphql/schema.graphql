@@ -7,6 +7,7 @@ type Article {
   slug: String!
   user: UsersPermissionsUser
   publishDate: Date
+  status: ENUM_ARTICLE_STATUS!
 }
 
 type ArticleAggregator {
@@ -45,6 +46,11 @@ type ArticleConnectionSlug {
   connection: ArticleConnection
 }
 
+type ArticleConnectionStatus {
+  key: String
+  connection: ArticleConnection
+}
+
 type ArticleConnectionTitle {
   key: String
   connection: ArticleConnection
@@ -69,6 +75,7 @@ type ArticleGroupBy {
   slug: [ArticleConnectionSlug]
   user: [ArticleConnectionUser]
   publishDate: [ArticleConnectionPublishDate]
+  status: [ArticleConnectionStatus]
 }
 
 input ArticleInput {
@@ -77,6 +84,7 @@ input ArticleInput {
   slug: String!
   user: ID
   publishDate: Date
+  status: ENUM_ARTICLE_STATUS!
 }
 
 type Categories {
@@ -154,6 +162,14 @@ type createFilePayload {
   file: UploadFile
 }
 
+input createHitInput {
+  data: HitInput
+}
+
+type createHitPayload {
+  hit: Hit
+}
+
 input createRestaurantInput {
   data: RestaurantInput
 }
@@ -224,6 +240,14 @@ type deleteFilePayload {
   file: UploadFile
 }
 
+input deleteHitInput {
+  where: InputID
+}
+
+type deleteHitPayload {
+  hit: Hit
+}
+
 input deleteRestaurantInput {
   where: InputID
 }
@@ -262,6 +286,7 @@ input editArticleInput {
   slug: String
   user: ID
   publishDate: Date
+  status: ENUM_ARTICLE_STATUS
 }
 
 input editCategoryInput {
@@ -285,6 +310,11 @@ input editFileInput {
   provider: String
   provider_metadata: JSON
   related: [ID]
+}
+
+input editHitInput {
+  count: Int
+  date: Date
 }
 
 input editRestaurantInput {
@@ -321,6 +351,12 @@ input editUserInput {
   restaurant: ID
 }
 
+enum ENUM_ARTICLE_STATUS {
+  draft
+  published
+  archive
+}
+
 input FileInput {
   name: String!
   alternativeText: String
@@ -343,6 +379,83 @@ type ForgotPassword {
   ok: Boolean
 }
 
+type Hit {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  count: Int
+  date: Date
+}
+
+type HitAggregator {
+  count: Int
+  totalCount: Int
+  sum: HitAggregatorSum
+  avg: HitAggregatorAvg
+  min: HitAggregatorMin
+  max: HitAggregatorMax
+}
+
+type HitAggregatorAvg {
+  count: Float
+}
+
+type HitAggregatorMax {
+  count: Float
+}
+
+type HitAggregatorMin {
+  count: Float
+}
+
+type HitAggregatorSum {
+  count: Float
+}
+
+type HitConnection {
+  values: [Hit]
+  groupBy: HitGroupBy
+  aggregate: HitAggregator
+}
+
+type HitConnectionCount {
+  key: Int
+  connection: HitConnection
+}
+
+type HitConnectionCreated_at {
+  key: DateTime
+  connection: HitConnection
+}
+
+type HitConnectionDate {
+  key: ID
+  connection: HitConnection
+}
+
+type HitConnectionId {
+  key: ID
+  connection: HitConnection
+}
+
+type HitConnectionUpdated_at {
+  key: DateTime
+  connection: HitConnection
+}
+
+type HitGroupBy {
+  id: [HitConnectionId]
+  created_at: [HitConnectionCreated_at]
+  updated_at: [HitConnectionUpdated_at]
+  count: [HitConnectionCount]
+  date: [HitConnectionDate]
+}
+
+input HitInput {
+  count: Int
+  date: Date
+}
+
 input InputID {
   id: ID!
 }
@@ -355,7 +468,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionContent | ArticleConnectionSlug | ArticleConnectionUser | ArticleConnectionPublishDate | createArticlePayload | updateArticlePayload | deleteArticlePayload | Categories | CategoriesConnection | CategoriesAggregator | CategoriesGroupBy | CategoriesConnectionId | CategoriesConnectionCreated_at | CategoriesConnectionUpdated_at | CategoriesConnectionName | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Restaurant | RestaurantConnection | RestaurantAggregator | RestaurantGroupBy | RestaurantConnectionId | RestaurantConnectionCreated_at | RestaurantConnectionUpdated_at | RestaurantConnectionName | RestaurantConnectionDescription | createRestaurantPayload | updateRestaurantPayload | deleteRestaurantPayload | Token | TokenConnection | TokenAggregator | TokenGroupBy | TokenConnectionId | TokenConnectionCreated_at | TokenConnectionUpdated_at | TokenConnectionToken | createTokenPayload | updateTokenPayload | deleteTokenPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionRestaurant | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | ForgotPassword | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionContent | ArticleConnectionSlug | ArticleConnectionUser | ArticleConnectionPublishDate | ArticleConnectionStatus | createArticlePayload | updateArticlePayload | deleteArticlePayload | Categories | CategoriesConnection | CategoriesAggregator | CategoriesGroupBy | CategoriesConnectionId | CategoriesConnectionCreated_at | CategoriesConnectionUpdated_at | CategoriesConnectionName | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Hit | HitConnection | HitAggregator | HitAggregatorSum | HitAggregatorAvg | HitAggregatorMin | HitAggregatorMax | HitGroupBy | HitConnectionId | HitConnectionCreated_at | HitConnectionUpdated_at | HitConnectionCount | HitConnectionDate | createHitPayload | updateHitPayload | deleteHitPayload | Restaurant | RestaurantConnection | RestaurantAggregator | RestaurantGroupBy | RestaurantConnectionId | RestaurantConnectionCreated_at | RestaurantConnectionUpdated_at | RestaurantConnectionName | RestaurantConnectionDescription | createRestaurantPayload | updateRestaurantPayload | deleteRestaurantPayload | Token | TokenConnection | TokenAggregator | TokenGroupBy | TokenConnectionId | TokenConnectionCreated_at | TokenConnectionUpdated_at | TokenConnectionToken | createTokenPayload | updateTokenPayload | deleteTokenPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | createFilePayload | updateFilePayload | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionRestaurant | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createArticle(input: createArticleInput): createArticlePayload
@@ -364,6 +477,9 @@ type Mutation {
   createCategory(input: createCategoryInput): createCategoryPayload
   updateCategory(input: updateCategoryInput): updateCategoryPayload
   deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createHit(input: createHitInput): createHitPayload
+  updateHit(input: updateHitInput): updateHitPayload
+  deleteHit(input: deleteHitInput): deleteHitPayload
   createRestaurant(input: createRestaurantInput): createRestaurantPayload
   updateRestaurant(input: updateRestaurantInput): updateRestaurantPayload
   deleteRestaurant(input: deleteRestaurantInput): deleteRestaurantPayload
@@ -404,6 +520,9 @@ type Query {
   category(id: ID!): Categories
   categories(sort: String, limit: Int, start: Int, where: JSON): [Categories]
   categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoriesConnection
+  hit(id: ID!): Hit
+  hits(sort: String, limit: Int, start: Int, where: JSON): [Hit]
+  hitsConnection(sort: String, limit: Int, start: Int, where: JSON): HitConnection
   restaurant(id: ID!): Restaurant
   restaurants(sort: String, limit: Int, start: Int, where: JSON): [Restaurant]
   restaurantsConnection(sort: String, limit: Int, start: Int, where: JSON): RestaurantConnection
@@ -574,6 +693,15 @@ input updateFileInput {
 
 type updateFilePayload {
   file: UploadFile
+}
+
+input updateHitInput {
+  where: InputID
+  data: editHitInput
+}
+
+type updateHitPayload {
+  hit: Hit
 }
 
 input updateRestaurantInput {

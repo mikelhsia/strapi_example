@@ -11,6 +11,8 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@sentry/node": "^5.15.5",
+    "axios": "^0.19.2",
     "knex": "<0.20.0",
     "slugify": "^1.4.0",
     "sqlite3": "latest",

@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const axios = require('axios');
 
 module.exports = async (ctx, next) => {
     let role;
@@ -44,6 +45,21 @@ module.exports = async (ctx, next) => {
                 ctx.state.user = await strapi.query('user', 'users-permissions').findOne({ id }, ['role']);
             }
         } catch (err) {
+            try {
+                const data = await axios({
+                    method: 'post',
+                    url: 'http://dev-e3dltt6h.auth0.com/userinfo',
+                    headers: {
+                        Authorization: ctx.request.header.authorization
+                    }
+                });
+                // if you want do more validation test
+                // feel free to add your code here.;
+
+                return await next();
+            } catch (error) {
+                return handleErrors(ctx, new Error('Invalid token: Token did not match with Strapi and Autho0'), 'unauthorized');
+            }
             return handleErrors(ctx, err, 'unauthorized');
         }
 

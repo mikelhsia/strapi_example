@@ -19,9 +19,9 @@ module.exports = {
         return entities.map(entity => {
             let restaurant = sanitizeEntity(entity, {model: strapi.models.restaurant});
             if (restaurant.chefs) {
-                restaurant.chefs.forEach(x => {
-                    if (x.email) {
-                        delete x.email
+                restaurant.chefs.forEach(chef => {
+                    if (chef.email) {
+                        delete chef.email;
                     }
                 });
             }

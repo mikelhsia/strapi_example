@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/articles": {
+    "/hits": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Article"
+                    "$ref": "#/components/schemas/Hit"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Hit"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Hit"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Hit"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewHit"
               }
             }
           }
         }
       }
     },
-    "/articles/count": {
+    "/hits/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Hit"
         ],
         "parameters": []
       }
     },
-    "/articles/{id}": {
+    "/hits/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Hit"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Hit"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Hit"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Hit"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewHit"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Hit"
         ],
         "parameters": [
           {
@@ -514,121 +514,29 @@
   },
   "components": {
     "schemas": {
-      "Article": {
+      "Hit": {
         "required": [
-          "id",
-          "title",
-          "content",
-          "slug",
-          "status"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
+          "count": {
+            "type": "integer"
+          },
+          "date": {
             "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "slug": {
-            "type": "string"
-          },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "tokens": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "restaurant": {
-                "type": "string"
-              }
-            }
-          },
-          "publishDate": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "draft",
-              "published",
-              "archive"
-            ]
           }
         }
       },
-      "NewArticle": {
-        "required": [
-          "title",
-          "content",
-          "slug",
-          "status"
-        ],
+      "NewHit": {
         "properties": {
-          "title": {
-            "type": "string"
+          "count": {
+            "type": "integer"
           },
-          "content": {
+          "date": {
             "type": "string"
-          },
-          "slug": {
-            "type": "string"
-          },
-          "user": {
-            "type": "string"
-          },
-          "publishDate": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "draft",
-              "published",
-              "archive"
-            ]
           }
         }
       }
@@ -636,7 +544,7 @@
   },
   "tags": [
     {
-      "name": "Article"
+      "name": "Hit"
     }
   ]
 }
