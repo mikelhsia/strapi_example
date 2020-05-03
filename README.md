@@ -15,3 +15,15 @@ A: Admin panel is built in react. Need to run `yarn develop --watch-admin` to mo
 If you start your application using `yarn start` or `yarn develop` the admin will be the old version. Your updates are not applied.
 
 To do so, you have to build the admin panel using the following command `yarn build`.
+
+### Q: How to use pm2 to manage your process
+
+`pm2 start server.js` to manage your strapi project through **server.js**
+
+or 
+
+use `pm2 start npm --name app -- run start` to to start the project with production environment
+
+or
+
+use `pm2 start ecosystem.config.js` to start application with config file
