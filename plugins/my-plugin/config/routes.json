@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "handler": "my-plugin.index",
+      "config": {
+        "policies": ["global::isAuthenticated"],
+        "prefix": false
+      }
+    }
+  ]
+}
